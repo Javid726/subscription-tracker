@@ -1,0 +1,31 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-chrome);
+  color: var(--color-ink);
+  font-family: var(--font-standard), sans-serif;
+  font-size: var(--text-body);
+  font-weight: var(--weight-regular);
+  font-synthesis: none;
+}
+
+.font-narrow {
+  font-family: var(--font-narrow), sans-serif;
+}
+
+.font-bold {
+  font-weight: var(--weight-bold);
+}
+.font-expanded {
+  font-weight: var(--weight-bold);
+  font-stretch: var(--font-width-expanded);
+}

@@ -1,0 +1,30 @@
+{
+  "name": "@abfahrt/web",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "typecheck": "tsc -b",
+    "preview": "vite preview",
+    "generate:tokens": "node --import tsx scripts/generate-token-css.ts",
+    "predev": "pnpm generate:tokens",
+    "prebuild": "pnpm generate:tokens"
+  },
+  "dependencies": {
+    "@fontsource-variable/archivo": "^5.3.0",
+    "@fontsource-variable/archivo-narrow": "^5.3.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  },
+  "devDependencies": {
+    "@abfahrt/tokens": "workspace:*",
+    "@types/node": "^24.13.3",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "@vitejs/plugin-react": "^6.1.0",
+    "tsx": "^4.23.13",
+    "vite": "^8.2.2"
+  }
+}
