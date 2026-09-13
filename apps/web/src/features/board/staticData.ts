@@ -1,4 +1,4 @@
-type StaticServiceRow = {
+export type StaticServiceRow = {
   readonly id: number;
   readonly departureLabel: string;
   readonly serviceName: string;

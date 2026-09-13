@@ -1,0 +1,65 @@
+.page {
+  padding: var(--layout-gutter);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: var(--space-lg);
+  padding: 10px 14px 12px;
+  border-bottom: 1px solid var(--color-rule);
+}
+
+.headerBrand {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-md);
+}
+
+.abfahrt {
+  font-family: var(--font-standard), sans-serif;
+  font-weight: var(--weight-bold);
+  font-size: 26px;
+  letter-spacing: var(--tracking-board-header);
+  text-transform: uppercase;
+  line-height: 1;
+  font-stretch: var(--font-width-expanded);
+}
+
+.stationLine {
+  font-family: var(--font-narrow), sans-serif;
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-label);
+  letter-spacing: var(--tracking-panel-header);
+  text-transform: uppercase;
+  color: var(--color-platform);
+}
+
+.wall {
+  display: grid;
+  grid-template-columns: repeat(var(--layout-columns), 1fr);
+  gap: var(--layout-gutter);
+  padding-top: var(--layout-gutter);
+}
+
+.nextDeparture {
+  grid-column: span 8;
+}
+
+.departures {
+  grid-column: span 12;
+  background-color: var(--color-ink);
+  color: var(--color-chrome);
+  padding: var(--space-sm);
+}
+
+.panel {
+  background-color: var(--color-chalk);
+  padding: var(--space-sm);
+}
+
+.annualFare,
+.bottomPanel {
+  grid-column: span 4;
+}
