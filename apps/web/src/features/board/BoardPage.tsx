@@ -25,7 +25,6 @@ export default function BoardPage() {
           <h2 id="annual-fare-heading">Annual Fare</h2>
         </section>
         <section aria-labelledby="departures-heading" className={styles.departures}>
-          <h2 id="departures-heading">Departures</h2>
           <BoardTable rows={staticServiceRows} />
         </section>
         <section

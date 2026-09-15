@@ -51,7 +51,6 @@
   grid-column: span 12;
   background-color: var(--color-ink);
   color: var(--color-chrome);
-  padding: var(--space-sm);
 }
 
 .panel {
