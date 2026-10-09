@@ -1,0 +1,41 @@
+.icon,
+.mark {
+  display: inline-grid;
+  flex: 0 0 auto;
+  place-items: center;
+}
+
+.icon {
+  background-color: var(--brand-color);
+  mask: var(--brand-mask) center / contain no-repeat;
+}
+
+.icon[data-size="board"],
+.mark[data-size="board"] {
+  width: 16px;
+  height: 16px;
+}
+
+.icon[data-size="panel"],
+.mark[data-size="panel"] {
+  width: 14px;
+  height: 14px;
+}
+
+.icon[data-size="hero"],
+.mark[data-size="hero"] {
+  width: 28px;
+  height: 28px;
+}
+
+.mark {
+  border: var(--hairline) solid currentColor;
+  font-family: var(--font-standard), sans-serif;
+  font-size: 9px;
+  font-weight: var(--weight-bold);
+  line-height: 1;
+}
+
+.mark[data-size="hero"] {
+  font-size: 15px;
+}

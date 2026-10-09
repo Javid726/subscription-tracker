@@ -1,64 +1,448 @@
 .page {
+  --fare-column-width: 132px;
+  width: min(100%, 1200px);
+  min-height: 100svh;
+  margin: 0 auto;
   padding: var(--layout-gutter);
 }
 
 .header {
   display: flex;
-  justify-content: space-between;
   align-items: flex-end;
+  justify-content: space-between;
   gap: var(--space-lg);
   padding: 10px 14px 12px;
-  border-bottom: 1px solid var(--color-rule);
+  border-bottom: var(--hairline) solid var(--color-rule);
 }
 
 .headerBrand {
   display: flex;
   align-items: baseline;
   gap: var(--space-md);
+  min-width: 0;
 }
 
 .abfahrt {
   font-family: var(--font-standard), sans-serif;
-  font-weight: var(--weight-bold);
   font-size: 26px;
-  letter-spacing: var(--tracking-board-header);
-  text-transform: uppercase;
-  line-height: 1;
   font-stretch: var(--font-width-expanded);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-board-header);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.stationLine,
+.headerMeta,
+.panelHeading,
+.panelCode,
+.mobileAnnualFare,
+.footer {
+  font-family: var(--font-narrow), sans-serif;
+  font-size: var(--text-label);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-panel-header);
+  text-transform: uppercase;
 }
 
 .stationLine {
-  font-family: var(--font-narrow), sans-serif;
-  font-weight: var(--weight-semibold);
-  font-size: var(--text-label);
-  letter-spacing: var(--tracking-panel-header);
-  text-transform: uppercase;
+  overflow: hidden;
   color: var(--color-platform);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.headerMeta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  color: var(--color-platform);
+  white-space: nowrap;
+}
+
+.headerMeta > * + * {
+  padding-inline-start: var(--space-md);
+  border-inline-start: var(--hairline) solid var(--color-rule);
+}
+
+.operations {
+  color: var(--color-ink);
 }
 
 .wall {
   display: grid;
-  grid-template-columns: repeat(var(--layout-columns), 1fr);
+  grid-template-columns: repeat(var(--layout-columns), minmax(0, 1fr));
   gap: var(--layout-gutter);
   padding-top: var(--layout-gutter);
+}
+
+.panel {
+  min-width: 0;
+  padding: var(--space-md);
+  background-color: var(--color-chalk);
 }
 
 .nextDeparture {
   grid-column: span 8;
 }
 
+.annualFare,
+.bottomPanel {
+  grid-column: span 4;
+}
+
 .departures {
   grid-column: span 12;
+  min-width: 0;
   background-color: var(--color-ink);
   color: var(--color-chrome);
 }
 
-.panel {
-  background-color: var(--color-chalk);
-  padding: var(--space-sm);
+.panelHeadingRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  padding-bottom: var(--space-sm);
+  border-bottom: var(--hairline) solid color-mix(in srgb, var(--color-ink) 14%, transparent);
 }
 
-.annualFare,
-.bottomPanel {
-  grid-column: span 4;
+.panelHeading {
+  line-height: 1;
+}
+
+.panelCode {
+  color: var(--color-platform);
+}
+
+.mobileAnnualFare {
+  display: none;
+}
+
+.nextContent {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr) var(--fare-column-width);
+  align-items: center;
+  gap: var(--space-md);
+  min-height: 88px;
+}
+
+.nextIdentity {
+  min-width: 0;
+}
+
+.nextName {
+  overflow: hidden;
+  font-family: var(--font-standard), sans-serif;
+  font-size: 24px;
+  font-stretch: var(--font-width-expanded);
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.01em;
+  line-height: 1.05;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.supportingText,
+.annualMeta,
+.itemCopy span,
+.panelFootnote {
+  color: var(--color-platform);
+  font-family: var(--font-narrow), sans-serif;
+}
+
+.supportingText {
+  margin-top: var(--space-xs);
+  font-size: var(--text-row);
+}
+
+.nextFare {
+  text-align: right;
+}
+
+.nextFare strong,
+.annualTotal {
+  display: block;
+  font-family: var(--font-standard), sans-serif;
+  font-stretch: var(--font-width-expanded);
+  font-variant-numeric: tabular-nums;
+  font-weight: var(--weight-bold);
+}
+
+.nextFare strong {
+  font-size: 24px;
+}
+
+.nextFare span {
+  display: block;
+  margin-top: var(--space-xs);
+  color: var(--color-platform);
+  font-family: var(--font-narrow), sans-serif;
+  font-size: var(--text-label);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.annualTotal {
+  padding-block: 10px 4px;
+  font-size: var(--text-display);
+  line-height: 1;
+  text-align: right;
+}
+
+.annualMeta {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  font-size: var(--text-label);
+}
+
+.signalText,
+.signalAmount {
+  color: var(--color-signal);
+}
+
+.panelList {
+  list-style: none;
+}
+
+.panelItem {
+  display: grid;
+  grid-template-columns: 14px minmax(0, 1fr) var(--fare-column-width);
+  align-items: center;
+  gap: var(--space-sm);
+  min-height: 52px;
+  border-bottom: var(--hairline) solid color-mix(in srgb, var(--color-ink) 14%, transparent);
+}
+
+.panelItem:last-child {
+  border-bottom: 0;
+}
+
+.itemCopy {
+  min-width: 0;
+}
+
+.itemCopy strong,
+.itemCopy span {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.itemCopy strong {
+  font-family: var(--font-narrow), sans-serif;
+  font-size: var(--text-row);
+  font-weight: var(--weight-semibold);
+}
+
+.itemCopy span {
+  margin-top: 2px;
+  font-size: var(--text-label);
+}
+
+.itemAmount,
+.signalAmount {
+  font-family: var(--font-narrow), sans-serif;
+  font-size: var(--text-row);
+  font-variant-numeric: tabular-nums;
+  font-weight: var(--weight-semibold);
+  text-align: right;
+  white-space: nowrap;
+}
+
+.lineCode {
+  display: grid;
+  width: 14px;
+  height: 14px;
+  place-items: center;
+  border: var(--hairline) solid var(--color-ink);
+  font-family: var(--font-narrow), sans-serif;
+  font-size: 7px;
+  font-weight: var(--weight-bold);
+}
+
+.panelFootnote {
+  padding-top: var(--space-sm);
+  border-top: var(--hairline) solid color-mix(in srgb, var(--color-ink) 14%, transparent);
+  font-size: var(--text-label);
+  text-align: right;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding: 10px 14px;
+  color: var(--color-platform);
+}
+
+@media (max-width: 960px) {
+  .page {
+    --fare-column-width: 112px;
+  }
+
+  .headerMeta span:nth-child(2) {
+    display: none;
+  }
+
+  .panel {
+    padding: 12px;
+  }
+
+  .nextDeparture {
+    grid-column: span 7;
+  }
+
+  .annualFare {
+    grid-column: span 5;
+  }
+
+  .panelItem {
+    grid-template-columns: 14px minmax(0, 1fr);
+  }
+
+  .panelItem > :last-child {
+    grid-column: 2;
+    grid-row: 2;
+    text-align: left;
+  }
+}
+
+@media (max-width: 720px) {
+  .page {
+    --fare-column-width: 88px;
+  }
+
+  .header {
+    align-items: flex-start;
+  }
+
+  .headerBrand {
+    display: block;
+  }
+
+  .stationLine {
+    margin-top: var(--space-xs);
+  }
+
+  .headerMeta {
+    display: block;
+    text-align: right;
+  }
+
+  .headerMeta > * {
+    display: block;
+  }
+
+  .headerMeta > * + * {
+    padding: 0;
+    margin-top: var(--space-xs);
+    border: 0;
+  }
+
+  .wall {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nextDeparture {
+    order: 1;
+  }
+
+  .departures {
+    order: 2;
+  }
+
+  .cancellations {
+    order: 3;
+  }
+
+  .notices {
+    order: 4;
+  }
+
+  .fares {
+    order: 5;
+  }
+
+  .annualFare {
+    display: none;
+  }
+
+  .mobileAnnualFare {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-sm);
+  }
+
+  .mobileAnnualFare strong {
+    color: var(--color-signal);
+    font-size: var(--text-body);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .nextContent {
+    grid-template-columns: 28px minmax(0, 1fr) var(--fare-column-width);
+    gap: var(--space-sm);
+    min-height: 78px;
+  }
+
+  .nextName,
+  .nextFare strong {
+    font-size: 18px;
+  }
+
+  .bottomPanel {
+    min-height: auto;
+  }
+
+  .panelItem {
+    grid-template-columns: 14px minmax(0, 1fr) var(--fare-column-width);
+  }
+
+  .panelItem > :last-child {
+    grid-column: auto;
+    grid-row: auto;
+    text-align: right;
+  }
+}
+
+@media (max-width: 460px) {
+  .abfahrt {
+    font-size: 22px;
+  }
+
+  .stationLine,
+  .headerMeta,
+  .panelHeading,
+  .panelCode,
+  .mobileAnnualFare,
+  .footer {
+    font-size: 9px;
+  }
+
+  .header {
+    gap: var(--space-sm);
+    padding-inline: var(--space-sm);
+  }
+
+  .nextContent {
+    grid-template-columns: 24px minmax(0, 1fr) var(--fare-column-width);
+  }
+
+  .supportingText {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .panelItem {
+    min-height: 48px;
+  }
+
+  .footer {
+    padding-inline: var(--space-sm);
+  }
 }
