@@ -1,0 +1,123 @@
+.root {
+  display: inline-block;
+  max-width: 100%;
+}
+
+.characters {
+  display: flex;
+  max-width: 100%;
+  gap: var(--flap-character-gap, 1px);
+  letter-spacing: normal;
+  white-space: nowrap;
+}
+
+.character {
+  position: relative;
+  display: inline-block;
+  flex: 0 0 var(--flap-character-width, 0.66em);
+  width: var(--flap-character-width, 0.66em);
+  height: 1.45em;
+  overflow: hidden;
+  background: var(--color-ink);
+  perspective: 7em;
+}
+
+.space {
+  flex-basis: 0.4em;
+  width: 0.4em;
+  background: transparent;
+}
+
+.half {
+  position: absolute;
+  inset-inline: 0;
+  height: 50%;
+  overflow: hidden;
+  background: var(--color-ink);
+  color: inherit;
+  backface-visibility: hidden;
+}
+
+.space .half {
+  visibility: hidden;
+}
+
+.half > span {
+  position: absolute;
+  inset-inline: 0;
+  height: 200%;
+  line-height: 1.45em;
+  text-align: center;
+}
+
+.settledTop,
+.departingHalf {
+  inset-block-start: 0;
+  border-bottom: var(--hairline) solid color-mix(in srgb, currentColor 12%, transparent);
+}
+
+.settledBottom,
+.arrivingHalf {
+  inset-block-end: 0;
+}
+
+.settledBottom > span,
+.arrivingHalf > span {
+  inset-block-end: 0;
+}
+
+.departingHalf {
+  z-index: 2;
+  transform-origin: bottom;
+  animation: depart 180ms ease-in var(--flap-delay) both;
+}
+
+.arrivingHalf {
+  z-index: 3;
+  transform-origin: top;
+  animation: arrive 220ms ease-out calc(var(--flap-delay) + 170ms) both;
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  border: 0;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@keyframes depart {
+  from {
+    transform: rotateX(0deg);
+  }
+
+  to {
+    transform: rotateX(-90deg);
+  }
+}
+
+@keyframes arrive {
+  from {
+    transform: rotateX(90deg);
+  }
+
+  to {
+    transform: rotateX(0deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .departingHalf {
+    display: none;
+    animation: none;
+  }
+
+  .arrivingHalf {
+    transform: rotateX(0deg);
+    animation: none;
+  }
+}

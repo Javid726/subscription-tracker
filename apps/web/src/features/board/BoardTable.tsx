@@ -1,3 +1,4 @@
+import { SplitFlapText } from '../splitFlap/SplitFlapText';
 import styles from './BoardTable.module.css';
 import { BrandMark } from './BrandMark';
 import type { StaticServiceRow } from './staticData';
@@ -42,7 +43,9 @@ export function BoardTable({ rows }: BoardTableProps) {
       <tbody>
         {rows.map((row) => (
           <tr className={styles.bodyRow} key={row.id} data-flagged={row.isFlagged ? '' : undefined}>
-            <td className={styles.departureCell}>{row.departureLabel}</td>
+            <td className={styles.departureCell}>
+              <SplitFlapText value={row.departureLabel} />
+            </td>
             <td className={styles.markCell}>
               <BrandMark brandKey={row.brandKey} label={row.serviceName} size="board" />
             </td>
