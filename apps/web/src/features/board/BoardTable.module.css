@@ -121,6 +121,11 @@
   white-space: nowrap;
 }
 
+.serviceFlap {
+  --flap-character-gap: 0.5px;
+  --flap-character-padding: 0.03em;
+}
+
 .cycleCell,
 .fareCell {
   text-align: right;

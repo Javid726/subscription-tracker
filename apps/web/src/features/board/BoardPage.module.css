@@ -104,8 +104,7 @@
   justify-content: space-between;
   gap: var(--space-sm);
   padding-bottom: var(--space-sm);
-  border-bottom: var(--hairline) solid
-    color-mix(in srgb, var(--color-ink) 14%, transparent);
+  border-bottom: var(--hairline) solid color-mix(in srgb, var(--color-ink) 14%, transparent);
 }
 
 .panelHeading {
@@ -191,6 +190,12 @@
   text-align: right;
 }
 
+.annualTotalFlap {
+  --flap-background: transparent;
+  --flap-character-gap: 0;
+  --flap-character-width: 0.71em;
+}
+
 .annualMeta {
   display: flex;
   justify-content: space-between;
@@ -214,8 +219,7 @@
   align-items: center;
   gap: var(--space-sm);
   min-height: 52px;
-  border-bottom: var(--hairline) solid
-    color-mix(in srgb, var(--color-ink) 14%, transparent);
+  border-bottom: var(--hairline) solid color-mix(in srgb, var(--color-ink) 14%, transparent);
 }
 
 .panelItem:last-child {
@@ -268,8 +272,7 @@
 
 .panelFootnote {
   padding-top: var(--space-sm);
-  border-top: var(--hairline) solid
-    color-mix(in srgb, var(--color-ink) 14%, transparent);
+  border-top: var(--hairline) solid color-mix(in srgb, var(--color-ink) 14%, transparent);
   font-size: var(--text-label);
   text-align: right;
 }

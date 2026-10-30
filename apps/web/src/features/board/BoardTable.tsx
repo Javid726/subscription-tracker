@@ -7,6 +7,9 @@ type BoardTableProps = {
   readonly rows: readonly StaticServiceRow[];
 };
 
+const ROW_STAGGER_MS = 35;
+const CHARACTER_STAGGER_MS = 3;
+
 export function BoardTable({ rows }: BoardTableProps) {
   return (
     <table className={styles.table}>
@@ -41,10 +44,14 @@ export function BoardTable({ rows }: BoardTableProps) {
         </tr>
       </thead>
       <tbody>
-        {rows.map((row) => (
+        {rows.map((row, rowIndex) => (
           <tr className={styles.bodyRow} key={row.id} data-flagged={row.isFlagged ? '' : undefined}>
             <td className={styles.departureCell}>
-              <SplitFlapText value={row.departureLabel} />
+              <SplitFlapText
+                delayMs={rowIndex * ROW_STAGGER_MS}
+                staggerMs={CHARACTER_STAGGER_MS}
+                value={row.departureLabel}
+              />
             </td>
             <td className={styles.markCell}>
               <BrandMark brandKey={row.brandKey} label={row.serviceName} size="board" />
@@ -53,12 +60,28 @@ export function BoardTable({ rows }: BoardTableProps) {
               {row.isFlagged && (
                 <span className={styles.visuallyHidden}>Cancellation candidate: </span>
               )}
-              {row.serviceName}
+              <SplitFlapText
+                className={styles.serviceFlap}
+                delayMs={rowIndex * ROW_STAGGER_MS}
+                sizing="proportional"
+                staggerMs={CHARACTER_STAGGER_MS}
+                value={row.serviceName}
+              />
             </th>
             <td className={styles.cycleCell} data-annual={row.isAnnual ? '' : undefined}>
-              {row.cycleLabel}
+              <SplitFlapText
+                delayMs={rowIndex * ROW_STAGGER_MS}
+                staggerMs={CHARACTER_STAGGER_MS}
+                value={row.cycleLabel}
+              />
             </td>
-            <td className={styles.fareCell}>{row.fareLabel}</td>
+            <td className={styles.fareCell}>
+              <SplitFlapText
+                delayMs={rowIndex * ROW_STAGGER_MS}
+                staggerMs={CHARACTER_STAGGER_MS}
+                value={row.fareLabel}
+              />
+            </td>
           </tr>
         ))}
       </tbody>

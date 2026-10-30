@@ -1,3 +1,4 @@
+import { SplitFlapText } from '../splitFlap/SplitFlapText';
 import styles from './BoardPage.module.css';
 import { BoardTable } from './BoardTable';
 import { BrandMark } from './BrandMark';
@@ -37,7 +38,9 @@ export default function BoardPage() {
             </h2>
             <div className={styles.mobileAnnualFare}>
               <span>Annual fare</span>
-              <strong>{annualFare.total}</strong>
+              <strong>
+                <SplitFlapText className={styles.annualTotalFlap} value={annualFare.total} />
+              </strong>
             </div>
           </div>
           <div className={styles.nextContent}>
@@ -68,7 +71,9 @@ export default function BoardPage() {
             </h2>
             <span className={styles.panelCode}>2026</span>
           </div>
-          <p className={styles.annualTotal}>{annualFare.total}</p>
+          <p className={styles.annualTotal}>
+            <SplitFlapText className={styles.annualTotalFlap} value={annualFare.total} />
+          </p>
           <div className={styles.annualMeta}>
             <span>{annualFare.monthlyEquivalent}</span>
             <span className={styles.signalText}>{annualFare.change}</span>

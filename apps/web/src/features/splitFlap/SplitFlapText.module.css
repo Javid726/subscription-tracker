@@ -18,7 +18,7 @@
   width: var(--flap-character-width, 0.66em);
   height: 1.45em;
   overflow: hidden;
-  background: var(--color-ink);
+  background: var(--flap-background, var(--color-ink));
   perspective: 7em;
 }
 
@@ -28,12 +28,30 @@
   background: transparent;
 }
 
+.proportional .character {
+  flex: 0 0 auto;
+  width: auto;
+  min-width: var(--flap-min-character-width, 0.38em);
+}
+
+.proportional .space {
+  flex-basis: 0.4em;
+  width: 0.4em;
+}
+
+.sizer {
+  display: block;
+  height: 1.45em;
+  padding-inline: var(--flap-character-padding, 0.04em);
+  visibility: hidden;
+}
+
 .half {
   position: absolute;
   inset-inline: 0;
   height: 50%;
   overflow: hidden;
-  background: var(--color-ink);
+  background: var(--flap-background, var(--color-ink));
   color: inherit;
   backface-visibility: hidden;
 }

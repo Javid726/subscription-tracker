@@ -6,6 +6,7 @@ type SplitFlapTextProps = {
   readonly delayMs?: number;
   readonly staggerMs?: number;
   readonly className?: string;
+  readonly sizing?: 'fixed' | 'proportional';
 };
 
 type FlapStyle = CSSProperties & {
@@ -17,6 +18,7 @@ export function SplitFlapText({
   delayMs = 0,
   staggerMs = 14,
   className,
+  sizing = 'fixed',
 }: SplitFlapTextProps) {
   const occurrenceByCharacter = new Map<string, number>();
   const characters = Array.from(value, (character) => {
@@ -25,7 +27,13 @@ export function SplitFlapText({
 
     return { character, id: `${character}-${occurrence}` };
   });
-  const rootClassName = className ? `${styles.root} ${className}` : styles.root;
+  const rootClassName = [
+    styles.root,
+    sizing === 'proportional' ? styles.proportional : undefined,
+    className,
+  ]
+    .filter(Boolean)
+    .join(' ');
 
   return (
     <span className={rootClassName}>
@@ -43,6 +51,9 @@ export function SplitFlapText({
               key={id}
               style={flapStyle}
             >
+              {sizing === 'proportional' && (
+                <span className={styles.sizer}>{visibleCharacter}</span>
+              )}
               <span className={`${styles.half} ${styles.settledTop}`}>
                 <span>{visibleCharacter}</span>
               </span>
